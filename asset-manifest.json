@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Helldivers2-randomizer/static/css/main.58e39073.css",
+    "main.js": "/Helldivers2-randomizer/static/js/main.9a1aec34.js",
+    "index.html": "/Helldivers2-randomizer/index.html",
+    "main.58e39073.css.map": "/Helldivers2-randomizer/static/css/main.58e39073.css.map",
+    "main.9a1aec34.js.map": "/Helldivers2-randomizer/static/js/main.9a1aec34.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.58e39073.css",
+    "static/js/main.9a1aec34.js"
+  ]
+}
