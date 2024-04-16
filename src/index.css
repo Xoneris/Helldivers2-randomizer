@@ -14,11 +14,20 @@ img {
   width: 50px;
 }
 
+.wrapper {
+  display: flex;
+}
+
+.wrapper section {
+  width: 50%;
+  padding: 10px;
+}
+
 .offensive-strategems-comtainer,
 .supply-strategems-comtainer,
 .defensive-strategems-comtainer {
   display: flex;
-  margin: 10px;
+  flex-wrap: wrap;
   padding: 5px;
 }
 
@@ -28,11 +37,15 @@ img {
 }
 
 .supply-strategems-comtainer {
-  box-shadow: 0 0 5px blue;
+  box-shadow: 0 0 5px lightskyblue;
   border-radius: 15px;
 }
 
 .defensive-strategems-comtainer {
   box-shadow: 0 0 5px green;
   border-radius: 15px;
+}
+
+.disabled {
+  opacity: 0.2;
 }
