@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Helldivers2-randomizer/static/css/main.25e64f9b.css",
-    "main.js": "/Helldivers2-randomizer/static/js/main.8a63ebd5.js",
+    "main.js": "/Helldivers2-randomizer/static/js/main.5afc5459.js",
     "index.html": "/Helldivers2-randomizer/index.html",
     "main.25e64f9b.css.map": "/Helldivers2-randomizer/static/css/main.25e64f9b.css.map",
-    "main.8a63ebd5.js.map": "/Helldivers2-randomizer/static/js/main.8a63ebd5.js.map"
+    "main.5afc5459.js.map": "/Helldivers2-randomizer/static/js/main.5afc5459.js.map"
   },
   "entrypoints": [
     "static/css/main.25e64f9b.css",
-    "static/js/main.8a63ebd5.js"
+    "static/js/main.5afc5459.js"
   ]
 }
