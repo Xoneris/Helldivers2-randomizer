@@ -13,71 +13,79 @@ function App() {
   const [onlyOneBackpack, setOnlyOneBackpack] = useState(false);
   const [onlyOneSupportWeapon, setOnlyOneSupportWeapon] = useState(false);
 
-  let strategem_copy = [...strategems];
+  
 
   const randomizer = () => {
+
+    let strategem_copy = [...strategems];
+
     if (disableStrategem !== null) {
       strategem_copy = strategems.filter(stratagem => !disableStrategem.includes(stratagem.name));
     }
-    console.log("------------------")
+
     for (let i = 0 ; i < 4 ; i++) {
       
       let array_length = strategem_copy.length - 1;
-      let random = Math.floor(Math.random() * (array_length + 1));
+      let random
       let temp = strategem_copy[i];
-      let x = 4;
+
+      do {
+        random = Math.floor(Math.random() * (array_length + 1));
+      }
+      while (random < i)
+
       strategem_copy[i] = strategem_copy[random];
       strategem_copy[random] = temp;
 
-      if (onlyOneBackpack === true && i > 0) {
+      if (onlyOneBackpack === true && onlyOneSupportWeapon=== false && i > 0) {
         for (let x = i-1 ; x >= 0 ; x--) {
-          // console.log("comparing " + strategem_copy[i].name + " against " + strategem_copy[x].name)
-          
           while (strategem_copy[i].backpack === true && strategem_copy[x].backpack === true) {
-            console.log("2 backpacks detected:", strategem_copy[x].name, "&", strategem_copy[i].name)
+             
+            do {
+              random = Math.floor(Math.random() * (array_length + 1));
+            }
+            while (random < i)
             
-            
-            random = Math.floor(Math.random() * (array_length + 1));
             temp = strategem_copy[i];
             strategem_copy[i] = strategem_copy[random];
             strategem_copy[random] = temp;
-            
           }
         } 
       }
-      if (onlyOneSupportWeapon === true && i > 0) {
+
+      if (onlyOneBackpack === false && onlyOneSupportWeapon=== true && i > 0) {
         for (let x = i-1 ; x >= 0 ; x--) {
-          while (strategem_copy[x].support_weapon === true && strategem_copy[i].support_weapon === true) {
+          while (strategem_copy[i].support_weapon === true && strategem_copy[x].support_weapon === true) {
+             
+            do {
               random = Math.floor(Math.random() * (array_length + 1));
-              temp = strategem_copy[i];
-              strategem_copy[i] = strategem_copy[random];
-              strategem_copy[random] = temp;
+            }
+            while (random < i)
+            
+            temp = strategem_copy[i];
+            strategem_copy[i] = strategem_copy[random];
+            strategem_copy[random] = temp;
           }
         } 
       }
-      
-      
 
-      // if(onlyOneSupportWeapon === true){
-      //   while (strategem_copy[i].support_weapon === true && strategem_copy[i+1].support_weapon === true){
-      //     j = Math.floor(Math.random() * (array_length + 1));
-      //     temp = strategem_copy[i];
-      //     strategem_copy[i] = strategem_copy[j];
-      //     strategem_copy[j] = temp;
-      //   }
-      // }
+      if (onlyOneSupportWeapon === true && onlyOneSupportWeapon === true && i > 0) {
+        for (let x = i-1 ; x >= 0 ; x--) {
+          while ((strategem_copy[i].backpack === true && strategem_copy[x].backpack === true) || (strategem_copy[i].support_weapon === true && strategem_copy[x].support_weapon === true)) {
+             
+            do {
+              random = Math.floor(Math.random() * (array_length + 1));
+            }
+            while (random < i)
+            
+            temp = strategem_copy[i];
+            strategem_copy[i] = strategem_copy[random];
+            strategem_copy[random] = temp;
+          }
+        } 
+      }
     }
-
-    // for (let i = strategem_copy.length - 1; i > 0; i--) {
-    //   let j = Math.floor(Math.random() * (i + 1));
-    //   let temp = strategem_copy[i];
-    //   strategem_copy[i] = strategem_copy[j];
-    //   strategem_copy[j] = temp;
-    //   setRando([...strategem_copy]);
-    // }
-    
     setRando([...strategem_copy.slice(0, strategemNumber)]);
-
   }
 
   // const disableEnable = (strategem) => {
