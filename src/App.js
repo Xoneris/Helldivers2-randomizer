@@ -88,15 +88,6 @@ function App() {
     setRando([...strategem_copy.slice(0, strategemNumber)]);
   }
 
-  // const disableEnable = (strategem) => {
-  //   if (disableStrategem.includes(strategem.name)) {
-  //     const index = disableStrategem.indexOf(strategem.name);
-  //     setDisableStrategem(disableStrategem.filter(strats => strats.name !== strategem.name))
-  //   } else {
-  //     setDisableStrategem([...disableStrategem, strategem])
-  //   }
-  // }
-
   const disableEnable = (strategemName) => {
     if (disableStrategem.includes(strategemName)) {
       const index = disableStrategem.indexOf(strategemName);
@@ -185,13 +176,8 @@ function App() {
           <div>
             {
               rando !== null ? 
-              // rando.map(strategem => (
-              //   <img src={strategem.icon} alt={strategem.name} key={strategem.name} />
-              // )):
               rando.map((strategem) => (
                 <>
-                  {/* <p>Support Weapon: {String(onlyOneSupportWeapon.current)}</p>
-                  <p>Backpack: {String(onlyOneBackpack.current)}</p> */}
                   <img src={process.env.PUBLIC_URL + strategem.icon} alt={strategem.name} key={strategem.name} />
                 </>
               ))
