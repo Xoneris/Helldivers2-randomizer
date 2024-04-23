@@ -32,20 +32,30 @@ img {
 }
 
 .offensive-strategems-comtainer {
+  background-color: #ff000011;
   box-shadow: 0 0 5px red;
   border-radius: 15px;
 }
 
 .supply-strategems-comtainer {
+  background-color: #0000ff11;
   box-shadow: 0 0 5px lightskyblue;
   border-radius: 15px;
 }
 
 .defensive-strategems-comtainer {
+  background-color: #00ff0011;
   box-shadow: 0 0 5px green;
   border-radius: 15px;
 }
 
 .disabled {
   opacity: 0.2;
+}
+
+fieldset {
+  border-radius: 15px;
+  box-shadow: 0 0 5px white;
+  border: 1px solid transparent;
+  background-color: #FFFFFF11;
 }
