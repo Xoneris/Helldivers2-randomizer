@@ -9,6 +9,10 @@ You can access the Randomizer [here](https://xoneris.github.io/Helldivers2-rando
 - You can toggle an option that your random results will only include either one and/or one support weapon.
   - Known bug: in 1% of cases or so the randomizer will still give you 2 backpack or support weapons. 
 
+## Changelog
+
+- 23.April - Added basic functionality for randomizing primaries, secondaries and grenades. Currently no options for filtering or selecting which ones though.  
+
 ## Credits
 
 Stratagem Icons by: [nvigneux](https://github.com/nvigneux/Helldivers-2-Stratagems-icons-svg?tab=readme-ov-file)
