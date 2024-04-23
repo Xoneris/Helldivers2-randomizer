@@ -1,4 +1,5 @@
 import { strategems } from "./strategems";
+import { primary_weapons, secondary_weapons, grenades } from "./weapons";
 import { useState, useRef } from "react";
 
 function App() {
@@ -7,17 +8,31 @@ function App() {
   const [strategemNumber, setStrategemNumber] = useState(4);
   const [disableStrategem, setDisableStrategem] = useState([]);
 
+  const [primaryWeaponRando, setPrimaryWeaponRando] = useState([]);
+  const [secondaryWeaponRando, setSecondaryWeaponRando] = useState([]);
+  const [grenadeRando, setGrenadeRando] = useState([]);
+
   // let strategemNumber = useRef(4);
   // let onlyOneBackpack = useRef(true);
   // let onlyOneSupportWeapon = useRef(true); 
   const [onlyOneBackpack, setOnlyOneBackpack] = useState(false);
   const [onlyOneSupportWeapon, setOnlyOneSupportWeapon] = useState(false);
 
-  
+  const array_shuffle = (array, array_length) => {
+    
+    let random = Math.floor(Math.random() * (array_length));
+    let temp = array[0];
+    array[0] = array[random];
+    array[random] = temp;
+    return array[0];
+  }  
 
   const randomizer = () => {
 
     let strategem_copy = [...strategems];
+    let primary_weapons_copy = [...primary_weapons];
+    let secondary_weapons_copy = [...secondary_weapons];
+    let grenades_copy = [...grenades];
 
     if (disableStrategem !== null) {
       strategem_copy = strategems.filter(stratagem => !disableStrategem.includes(stratagem.name));
@@ -85,16 +100,25 @@ function App() {
         } 
       }
     }
+
+    setPrimaryWeaponRando(array_shuffle(primary_weapons_copy, (primary_weapons_copy.length - 1)));
+    setSecondaryWeaponRando(array_shuffle(secondary_weapons_copy, (secondary_weapons_copy.length - 1)));
+    setGrenadeRando(array_shuffle(grenades_copy, (grenades_copy.length - 1)));
     setRando([...strategem_copy.slice(0, strategemNumber)]);
   }
 
   const disableEnable = (strategemName) => {
     if (disableStrategem.includes(strategemName)) {
-      const index = disableStrategem.indexOf(strategemName);
       setDisableStrategem(disableStrategem.filter(strats => strats !== strategemName))
     } else {
       setDisableStrategem([...disableStrategem, strategemName])
     }
+  }
+
+  const disableAll = () => {
+    let temp_array = [];
+    strategems.map(strategem => { temp_array = [...temp_array, strategem.name] })
+    setDisableStrategem([temp_array])
   }
 
   return (
@@ -154,7 +178,7 @@ function App() {
             <fieldset>
               <legend>Disable/Enable all Stratagems</legend>
                 <button onClick={() => {setDisableStrategem([])}}>Enable All</button>
-                <button disabled onClick={() => {setDisableStrategem([])}}>Disable All</button>
+                <button disabled onClick={disableAll}>Disable All</button>
             </fieldset>
 
             <fieldset>
@@ -166,7 +190,26 @@ function App() {
               <label>Only 1 Support Weapon</label>
             </fieldset>
 
+            {/* <fieldset>
+              <legend>Warbonds</legend>
+              <input type="checkbox" value="helldivers-mobilize" />
+              <label>Helldivers Mobilize</label>
+              <br/>
+              <input type="checkbox" value="steeled-veterans" />
+              <label>Steeled Veterans</label>
+              <br/>
+              <input type="checkbox" value="cutting-edge" />
+              <label>Cutting Edge</label>
+              <br/>
+              <input type="checkbox" value="democratic-detonation" />
+              <label>Democratic Detonation</label>
+            </fieldset> */}
           </div>
+
+          {/* <div>
+            <h2>titel</h2>
+          </div> */}
+
         </div>
         
         <div>
@@ -184,6 +227,11 @@ function App() {
               :
               null
             }
+          </div>
+          <div>
+            <p><b>Primary Weapon:</b> {primaryWeaponRando.name}</p>
+            <p><b>Secondary Weapon:</b> {secondaryWeaponRando.name}</p>
+            <p><b>Grenade Weapon:</b> {grenadeRando.name}</p>
           </div>
         </div>
 

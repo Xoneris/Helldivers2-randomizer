@@ -1,4 +1,3 @@
-
 export const strategems = [
     {
         "name": "Anti-Materiel Rifle",
