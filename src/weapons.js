@@ -83,10 +83,10 @@ export const primary_weapons = [
         "name": "CB-9 Exploding Crossbow",
         "warbond": "Democratic Detonation"
     },
-    {
-        "name": "",
-        "warbond": ""
-    },
+    // {
+    //     "name": "",
+    //     "warbond": ""
+    // },
 ]
 
 export const secondary_weapons = [

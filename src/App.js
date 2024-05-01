@@ -17,13 +17,20 @@ function App() {
   // let onlyOneSupportWeapon = useRef(true); 
   const [onlyOneBackpack, setOnlyOneBackpack] = useState(false);
   const [onlyOneSupportWeapon, setOnlyOneSupportWeapon] = useState(false);
+  const [isSuperCitizen, setIsSuperCitizen] = useState(true);
+
 
   const array_shuffle = (array, array_length) => {
     
+    if (isSuperCitizen === false){
+      array = array.filter((weapon) => weapon.name !== "MP-98 Knight");
+    }
+
     let random = Math.floor(Math.random() * (array_length));
     let temp = array[0];
     array[0] = array[random];
     array[random] = temp;
+
     return array[0];
   }  
 
@@ -129,7 +136,11 @@ function App() {
             <div className="offensive-strategems-comtainer">
               {strategems.filter((strategem) => strategem.category === "Offensive" ).map(strategem => (
                   <div>
-                    <img src={process.env.PUBLIC_URL + strategem.icon} alt={strategem.name} key={strategem.name} onClick={() => {disableEnable(strategem.name)}}
+                    <img src={process.env.PUBLIC_URL + strategem.icon} 
+                      alt={strategem.name} 
+                      key={strategem.name} 
+                      title={strategem.name}
+                      onClick={() => {disableEnable(strategem.name)}}
                       className={disableStrategem.includes(strategem.name) ? "disabled" : null}
                     />
                   </div>
@@ -139,7 +150,11 @@ function App() {
             <div className="supply-strategems-comtainer">
               {strategems.filter((strategem) => strategem.category === "Supply" && strategem.backpack !== true ).map(strategem => (
                   <div>
-                    <img src={process.env.PUBLIC_URL + strategem.icon} alt={strategem.name} key={strategem.name} onClick={() => {disableEnable(strategem.name)}}
+                    <img src={process.env.PUBLIC_URL + strategem.icon} 
+                      alt={strategem.name} 
+                      key={strategem.name} 
+                      title={strategem.name}
+                      onClick={() => {disableEnable(strategem.name)}}
                       className={disableStrategem.includes(strategem.name) ? "disabled" : null}
                     />
                   </div>
@@ -147,7 +162,11 @@ function App() {
               <hr/>
               {strategems.filter((strategem) => strategem.category === "Supply" && strategem.backpack === true ).map(strategem => (
                   <div>
-                    <img src={process.env.PUBLIC_URL + strategem.icon} alt={strategem.name} key={strategem.name} onClick={() => {disableEnable(strategem.name)}}
+                    <img src={process.env.PUBLIC_URL + strategem.icon} 
+                      alt={strategem.name} 
+                      key={strategem.name} 
+                      title={strategem.name}
+                      onClick={() => {disableEnable(strategem.name)}}
                       className={disableStrategem.includes(strategem.name) ? "disabled" : null}
                     />
                   </div>
@@ -157,7 +176,11 @@ function App() {
             <div className="defensive-strategems-comtainer">
               {strategems.filter((strategem) => strategem.category === "Defensive" ).map(strategem => (
                   <div>
-                    <img src={process.env.PUBLIC_URL + strategem.icon} alt={strategem.name} key={strategem.name} onClick={() => {disableEnable(strategem.name)}}
+                    <img src={process.env.PUBLIC_URL + strategem.icon} 
+                      alt={strategem.name} 
+                      key={strategem.name} 
+                      title={strategem.name}
+                      onClick={() => {disableEnable(strategem.name)}}
                       className={disableStrategem.includes(strategem.name) ? "disabled" : null}
                     />
                   </div>
@@ -188,6 +211,14 @@ function App() {
               <br/>
               <input type="checkbox" value="support-weapon"  onClick={() => setOnlyOneSupportWeapon(!onlyOneSupportWeapon)} />
               <label>Only 1 Support Weapon</label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Are you a Super Citizen?</legend>
+              <input type="radio" name="super-citizen" value="yes" onClick={() => setIsSuperCitizen(true)}/>
+              <label>Yes</label>
+              <input type="radio" name="super-citizen" value="no" onClick={() => setIsSuperCitizen(false)}/>
+              <label>No</label>
             </fieldset>
 
             {/* <fieldset>
@@ -221,7 +252,11 @@ function App() {
               rando !== null ? 
               rando.map((strategem) => (
                 <>
-                  <img src={process.env.PUBLIC_URL + strategem.icon} alt={strategem.name} key={strategem.name} />
+                  <img src={process.env.PUBLIC_URL + strategem.icon} 
+                    alt={strategem.name} 
+                    key={strategem.name} 
+                    title={strategem.name}
+                    />
                 </>
               ))
               :

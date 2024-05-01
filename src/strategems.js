@@ -1,5 +1,12 @@
 export const strategems = [
     {
+        "name": "Airburst Rocket Launcher",
+        "icon": "/strategems/Airburst Rocket Launcher.svg",
+        "category": "Supply",
+        "backpack": true,
+        "support_weapon": true,
+    },
+    {
         "name": "Anti-Materiel Rifle",
         "icon": "/strategems/Anti-Materiel Rifle.svg",
         "category": "Supply",
