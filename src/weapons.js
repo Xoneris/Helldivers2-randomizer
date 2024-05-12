@@ -83,10 +83,18 @@ export const primary_weapons = [
         "name": "CB-9 Exploding Crossbow",
         "warbond": "Democratic Detonation"
     },
-    // {
-    //     "name": "",
-    //     "warbond": ""
-    // },
+    {
+        "name": "AR-61 Tenderizer",
+        "warbond": "Polar Patriots"
+    },
+    {
+        "name": "SMG-72 Pummeller",
+        "warbond": "Polar Patriots"
+    },
+    {
+        "name": "PLAS-101 Purifier",
+        "warbond": "Polar Patriots"
+    },
 ]
 
 export const secondary_weapons = [
@@ -109,6 +117,10 @@ export const secondary_weapons = [
     {
         "name": "GP-31 Grenade Pistol",
         "warbond": "Democratic Detonation"
+    },
+    {
+        "name": "P-113 Verdict",
+        "warbond": "Polar Patriots"
     },
 ]
 
@@ -140,6 +152,10 @@ export const grenades = [
     {
         "name": "G-123 Thermite",
         "warbond": "Democratic Detonation"
+    },
+    {
+        "name": "G-13 Incendiary Impact Grenade",
+        "warbond": "Polar Patriots"
     },
 ]
 
