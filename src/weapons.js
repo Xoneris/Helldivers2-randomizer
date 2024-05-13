@@ -72,7 +72,7 @@ export const primary_weapons = [
         "warbond": "Helldivers Mobilize"
     },
     {
-        "name": "BR-14 Abjudicator",
+        "name": "BR-14 Adjudicator",
         "warbond": "Democratic Detonation"
     },
     {
