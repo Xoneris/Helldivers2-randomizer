@@ -59,7 +59,7 @@ function App() {
       strategem_copy[i] = strategem_copy[random];
       strategem_copy[random] = temp;
 
-      if (onlyOneBackpack === true && onlyOneSupportWeapon=== false && i > 0) {
+      if (onlyOneBackpack === true && onlyOneSupportWeapon === false && i > 0) {
         for (let x = i-1 ; x >= 0 ; x--) {
           while (strategem_copy[i].backpack === true && strategem_copy[x].backpack === true) {
              
@@ -112,6 +112,44 @@ function App() {
     setSecondaryWeaponRando(array_shuffle(secondary_weapons_copy, (secondary_weapons_copy.length - 1)));
     setGrenadeRando(array_shuffle(grenades_copy, (grenades_copy.length - 1)));
     setRando([...strategem_copy.slice(0, strategemNumber)]);
+  }
+
+
+  const newRando = () => {
+
+    let strategem_copy = [...strategems];
+    let rando_array = []
+
+    if (disableStrategem !== null) {
+      strategem_copy = strategems.filter(stratagem => !disableStrategem.includes(stratagem.name));
+    }
+
+    for (let i = 0 ; i < 4 ; i++) {
+
+      let array_length = strategem_copy.length - 1;
+      let random = Math.floor(Math.random() * (array_length + 1));
+
+      rando_array.push(strategem_copy[random])
+      console.log(rando_array)
+      strategem_copy = strategem_copy.filter(stratagem => stratagem.name !== strategem_copy[random].name)
+      console.log(strategem_copy)
+      console.log("-----"+i+"-----")
+      
+
+      // if first round
+      // randomly put one stratagem into rando array
+      
+      // Remove stratagem from copied array
+      // if removed strategem is backpack or support weapon
+      // If only 1 backpack/support is select also remove all those strategems from array. 
+      
+      // if >1 round
+      // randomly select new stratagem
+      // 
+
+    }
+
+    setRando([...rando_array])
   }
 
   const disableEnable = (strategemName) => {
@@ -244,7 +282,8 @@ function App() {
         </div>
         
         <div>
-          <button onClick={randomizer}>Randomize</button>
+          {/* <button onClick={randomizer}>Randomize</button> */}
+          <button onClick={newRando}>Randomize</button>
           <hr/>
 
           <div>
