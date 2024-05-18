@@ -19,6 +19,7 @@ function App() {
   const [onlyOneSupportWeapon, setOnlyOneSupportWeapon] = useState(false);
   const [isSuperCitizen, setIsSuperCitizen] = useState(true);
 
+  const [removed, setRemoved] = useState([])
 
   const array_shuffle = (array, array_length) => {
     
@@ -120,20 +121,42 @@ function App() {
     let strategem_copy = [...strategems];
     let rando_array = []
 
+    let backpackRemoved = false
+    let supportWeaponRemoved = false
+
     if (disableStrategem !== null) {
       strategem_copy = strategems.filter(stratagem => !disableStrategem.includes(stratagem.name));
     }
 
     for (let i = 0 ; i < 4 ; i++) {
 
-      let array_length = strategem_copy.length - 1;
-      let random = Math.floor(Math.random() * (array_length + 1));
-
+      let array_length = strategem_copy.length - 1 ;
+      let random = Math.floor(Math.random() * (array_length) + 1);
       rando_array.push(strategem_copy[random])
-      console.log(rando_array)
-      strategem_copy = strategem_copy.filter(stratagem => stratagem.name !== strategem_copy[random].name)
-      console.log(strategem_copy)
-      console.log("-----"+i+"-----")
+
+      if (backpackRemoved === false || supportWeaponRemoved === false){
+
+        if (onlyOneBackpack === true && backpackRemoved === false && strategem_copy[random].backpack === true && onlyOneSupportWeapon === true && supportWeaponRemoved === false && strategem_copy[random].support_weapon === true) {
+          strategem_copy = strategem_copy.filter(stratagem => stratagem.backpack !== true && stratagem.support_weapon !== true)
+          backpackRemoved = true
+          supportWeaponRemoved = true
+        }
+        else if (onlyOneBackpack === true && backpackRemoved === false && strategem_copy[random].backpack === true) {
+          strategem_copy = strategem_copy.filter(stratagem => stratagem.backpack !== true)
+          backpackRemoved = true
+        }
+        else if (onlyOneSupportWeapon === true && supportWeaponRemoved === false && strategem_copy[random].support_weapon === true) {
+          strategem_copy = strategem_copy.filter(stratagem => stratagem.support_weapon !== true)
+          supportWeaponRemoved = true
+        }
+        else {
+          strategem_copy = strategem_copy.filter(stratagem => stratagem.name !== strategem_copy[random].name) 
+        }
+      } else {
+        strategem_copy = strategem_copy.filter(stratagem => stratagem.name !== strategem_copy[random].name) 
+      } 
+      
+
       
 
       // if first round
@@ -149,6 +172,7 @@ function App() {
 
     }
 
+    // console.log(rando_array)
     setRando([...rando_array])
   }
 
@@ -300,6 +324,18 @@ function App() {
               ))
               :
               null
+            }
+            <hr/>
+            {
+              removed !== null?
+              removed.map((strategem) => (
+                <><img src={process.env.PUBLIC_URL + strategem.icon} 
+                    alt={strategem.name} 
+                    key={strategem.name} 
+                    title={strategem.name}
+                    /></>
+              ))
+              : null
             }
           </div>
           <div>
