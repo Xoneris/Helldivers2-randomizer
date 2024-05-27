@@ -12,18 +12,13 @@ function App() {
   const [secondaryWeaponRando, setSecondaryWeaponRando] = useState([]);
   const [grenadeRando, setGrenadeRando] = useState([]);
 
-  // let strategemNumber = useRef(4);
-  // let onlyOneBackpack = useRef(true);
-  // let onlyOneSupportWeapon = useRef(true); 
   const [onlyOneBackpack, setOnlyOneBackpack] = useState(false);
   const [onlyOneSupportWeapon, setOnlyOneSupportWeapon] = useState(false);
   const [isSuperCitizen, setIsSuperCitizen] = useState(true);
 
-  const [removed, setRemoved] = useState([])
-
   const array_shuffle = (array, array_length) => {
     
-    if (isSuperCitizen === false){
+  if (isSuperCitizen === false){
       array = array.filter((weapon) => weapon.name !== "MP-98 Knight");
     }
 
@@ -34,6 +29,8 @@ function App() {
 
     return array[0];
   }  
+
+  
 
   const randomizer = () => {
 
@@ -117,8 +114,11 @@ function App() {
 
 
   const newRando = () => {
-
+  
     let strategem_copy = [...strategems];
+    let primary_weapons_copy = [...primary_weapons];
+    let secondary_weapons_copy = [...secondary_weapons];
+    let grenades_copy = [...grenades];
     let rando_array = []
 
     let backpackRemoved = false
@@ -130,8 +130,8 @@ function App() {
 
     for (let i = 0 ; i < 4 ; i++) {
 
-      let array_length = strategem_copy.length - 1 ;
-      let random = Math.floor(Math.random() * (array_length) + 1);
+      const array_length = strategem_copy.length - 1 ;
+      const random = Math.floor(Math.random() * (array_length) + 1);
       rando_array.push(strategem_copy[random])
 
       if (backpackRemoved === false || supportWeaponRemoved === false){
@@ -155,25 +155,11 @@ function App() {
       } else {
         strategem_copy = strategem_copy.filter(stratagem => stratagem.name !== strategem_copy[random].name) 
       } 
-      
-
-      
-
-      // if first round
-      // randomly put one stratagem into rando array
-      
-      // Remove stratagem from copied array
-      // if removed strategem is backpack or support weapon
-      // If only 1 backpack/support is select also remove all those strategems from array. 
-      
-      // if >1 round
-      // randomly select new stratagem
-      // 
-
     }
-
-    // console.log(rando_array)
     setRando([...rando_array])
+    setPrimaryWeaponRando(array_shuffle(primary_weapons_copy, (primary_weapons_copy.length - 1)));
+    setSecondaryWeaponRando(array_shuffle(secondary_weapons_copy, (secondary_weapons_copy.length - 1)));
+    setGrenadeRando(array_shuffle(grenades_copy, (grenades_copy.length - 1)));
   }
 
   const disableEnable = (strategemName) => {
@@ -324,18 +310,6 @@ function App() {
               ))
               :
               null
-            }
-            <hr/>
-            {
-              removed !== null?
-              removed.map((strategem) => (
-                <><img src={process.env.PUBLIC_URL + strategem.icon} 
-                    alt={strategem.name} 
-                    key={strategem.name} 
-                    title={strategem.name}
-                    /></>
-              ))
-              : null
             }
           </div>
           <div>
