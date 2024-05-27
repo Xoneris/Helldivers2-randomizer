@@ -13,6 +13,7 @@ You can access the Randomizer [here](https://xoneris.github.io/Helldivers2-rando
 
 - 1.May - Added Airburst rocket and an option to select if you are a super citizen or not.
 - 23.April - Added basic functionality for randomizing primaries, secondaries and grenades. Currently no options for filtering or selecting which ones though.  
+- 27.march - Added Emancipator Exosuit.
 
 ## Credits
 

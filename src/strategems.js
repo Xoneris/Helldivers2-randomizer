@@ -355,7 +355,7 @@ export const strategems = [
         "category": "Defensive",
         "backpack": false,
         "support_weapon": false,
-    }
+    },
     {
         "name": "Emancipator Exosuit",
         "icon": "/strategems/Emancipator Exosuit.svg",
