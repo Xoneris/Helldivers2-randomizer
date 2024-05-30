@@ -16,6 +16,11 @@ function App() {
   const [onlyOneSupportWeapon, setOnlyOneSupportWeapon] = useState(false);
   const [isSuperCitizen, setIsSuperCitizen] = useState(true);
 
+  let strategem_copy = [...strategems];
+  let primary_weapons_copy = [...primary_weapons];
+  let secondary_weapons_copy = [...secondary_weapons];
+  let grenades_copy = [...grenades];
+
   const array_shuffle = (array, array_length) => {
     
   if (isSuperCitizen === false){
@@ -115,10 +120,11 @@ function App() {
 
   const newRando = () => {
   
-    let strategem_copy = [...strategems];
-    let primary_weapons_copy = [...primary_weapons];
-    let secondary_weapons_copy = [...secondary_weapons];
-    let grenades_copy = [...grenades];
+    // let strategem_copy = [...strategems];
+    // let primary_weapons_copy = [...primary_weapons];
+    // let secondary_weapons_copy = [...secondary_weapons];
+    // let grenades_copy = [...grenades];
+    
     let rando_array = []
 
     let backpackRemoved = false
@@ -174,6 +180,19 @@ function App() {
     let temp_array = [];
     strategems.map(strategem => { temp_array = [...temp_array, strategem.name] })
     setDisableStrategem([temp_array])
+  }
+
+  const disableWarbond = (warbond_name) => {
+
+    
+    let warbond_primary = primary_weapons.filter((primary) => primary.warbond === warbond_name)
+
+    // if (checkbox === true){
+    //   primary_weapons_copy = primary_weapons_copy.filter((primary) => !warbond_primary.has(primary))
+    // }else{
+    //   primary_weapons_copy = [...primary_weapons_copy, warbond_primary]
+    // }
+
   }
 
   return (
@@ -268,6 +287,44 @@ function App() {
               <input type="radio" name="super-citizen" value="no" onClick={() => setIsSuperCitizen(false)}/>
               <label>No</label>
             </fieldset>
+
+            <fieldset>
+              <legend>Warbonds</legend>
+              <label>Disable Warbonds you don't own</label>
+              <br/>
+              
+              
+              <input type="checkbox" value="Steeled Veterans" onClick={() => disableWarbond("Steeled Veterans")}/>
+              <label>Steeled Veterans</label>
+              <br/>
+              <input type="checkbox" value="Cutting Edge" onClick={() => disableWarbond("Cutting Edge")}/>
+              <label>Cutting Edge</label>
+              <br/>
+              <input type="checkbox" value="Democratic Detonation" onClick={() => disableWarbond("Democratic Detonation")}/>
+              <label>Democratic Detonation</label>
+              <br/>
+              <input type="checkbox" value="Polar Patriots" onClick={() => disableWarbond("Polar Patriots")}/>
+              <label>Polar Patriots</label>
+            </fieldset>
+            
+            {/* <fieldset>
+              <legend>Steeled Veterans</legend>
+              {
+                primary_weapons.filter((primary) => primary.warbond === "Steeled Veterans").map(primary => (
+                  <p>{primary.name}</p>
+                ))
+              }
+              {
+                secondary_weapons.filter((secondary) => secondary.warbond === "Steeled Veterans").map(secondary => (
+                  <p>{secondary.name}</p>
+                ))
+              }
+              {
+                grenades.filter((grenade) => grenade.warbond === "Steeled Veterans").map(grenade => (
+                  <p>{grenade.name}</p>
+                ))
+              }
+            </fieldset> */}
 
             {/* <fieldset>
               <legend>Warbonds</legend>
