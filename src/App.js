@@ -17,9 +17,10 @@ function App() {
   const [isSuperCitizen, setIsSuperCitizen] = useState(true);
 
   let strategem_copy = [...strategems];
-  let primary_weapons_copy = [...primary_weapons];
-  let secondary_weapons_copy = [...secondary_weapons];
-  let grenades_copy = [...grenades];
+
+  const primary_weapons_copy = useRef(primary_weapons)
+  const secondary_weapons_copy = useRef(secondary_weapons)
+  const grenades_copy = useRef(grenades)
 
   const array_shuffle = (array, array_length) => {
     
@@ -27,7 +28,7 @@ function App() {
       array = array.filter((weapon) => weapon.name !== "MP-98 Knight");
     }
 
-    let random = Math.floor(Math.random() * (array_length));
+    let random = Math.floor(Math.random() * (array_length + 1));
     let temp = array[0];
     array[0] = array[random];
     array[random] = temp;
@@ -163,9 +164,9 @@ function App() {
       } 
     }
     setRando([...rando_array])
-    setPrimaryWeaponRando(array_shuffle(primary_weapons_copy, (primary_weapons_copy.length - 1)));
-    setSecondaryWeaponRando(array_shuffle(secondary_weapons_copy, (secondary_weapons_copy.length - 1)));
-    setGrenadeRando(array_shuffle(grenades_copy, (grenades_copy.length - 1)));
+    setPrimaryWeaponRando(array_shuffle(primary_weapons_copy.current, (primary_weapons_copy.current.length - 1)));
+    setSecondaryWeaponRando(array_shuffle(secondary_weapons_copy.current, (secondary_weapons_copy.current.length - 1)));
+    setGrenadeRando(array_shuffle(grenades_copy.current, (grenades_copy.current.length - 1)));
   }
 
   const disableEnable = (strategemName) => {
@@ -182,16 +183,22 @@ function App() {
     setDisableStrategem([temp_array])
   }
 
-  const disableWarbond = (warbond_name) => {
+  const disableWarbond = (event, warbond_name) => {
 
-    
-    let warbond_primary = primary_weapons.filter((primary) => primary.warbond === warbond_name)
+    let warbond_primarys = primary_weapons.filter((primary) => primary.warbond === warbond_name)
+    let warbond_secondarys = secondary_weapons.filter((secondary) => secondary.warbond === warbond_name)
+    let warbond_grenades = grenades.filter((grenade) => grenade.warbond === warbond_name)
 
-    // if (checkbox === true){
-    //   primary_weapons_copy = primary_weapons_copy.filter((primary) => !warbond_primary.has(primary))
-    // }else{
-    //   primary_weapons_copy = [...primary_weapons_copy, warbond_primary]
-    // }
+    if (event.target.checked === true){
+      primary_weapons_copy.current = primary_weapons_copy.current.filter((primary) => primary.warbond !== warbond_name)
+      secondary_weapons_copy.current = secondary_weapons_copy.current.filter((secondary) => secondary.warbond !== warbond_name)
+      grenades_copy.current = grenades_copy.current.filter((grenade) => grenade.warbond !== warbond_name)
+    } else {
+      primary_weapons_copy.current.push(...warbond_primarys)
+      secondary_weapons_copy.current.push(...warbond_secondarys)
+      grenades_copy.current.push(...warbond_grenades)
+
+    }
 
   }
 
@@ -201,7 +208,7 @@ function App() {
           <section>
             <h2>Offensive</h2>
             <div className="offensive-strategems-comtainer">
-              {strategems.filter((strategem) => strategem.category === "Offensive" ).map(strategem => (
+              {strategems.filter((strategem) => strategem.category === "Offensive").map(strategem => (
                   <div>
                     <img src={process.env.PUBLIC_URL + strategem.icon} 
                       alt={strategem.name} 
@@ -241,7 +248,7 @@ function App() {
             </div>
             <h2>Defensive</h2>
             <div className="defensive-strategems-comtainer">
-              {strategems.filter((strategem) => strategem.category === "Defensive" ).map(strategem => (
+              {strategems.filter((strategem) => strategem.category === "Defensive").map(strategem => (
                   <div>
                     <img src={process.env.PUBLIC_URL + strategem.icon} 
                       alt={strategem.name} 
@@ -294,16 +301,16 @@ function App() {
               <br/>
               
               
-              <input type="checkbox" value="Steeled Veterans" onClick={() => disableWarbond("Steeled Veterans")}/>
+              <input type="checkbox" value="Steeled Veterans" onClick={(e) => disableWarbond(e, "Steeled Veterans")}/>
               <label>Steeled Veterans</label>
               <br/>
-              <input type="checkbox" value="Cutting Edge" onClick={() => disableWarbond("Cutting Edge")}/>
+              <input type="checkbox" value="Cutting Edge" onClick={(e) => disableWarbond(e, "Cutting Edge")}/>
               <label>Cutting Edge</label>
               <br/>
-              <input type="checkbox" value="Democratic Detonation" onClick={() => disableWarbond("Democratic Detonation")}/>
+              <input type="checkbox" value="Democratic Detonation" onClick={(e) => disableWarbond(e, "Democratic Detonation")}/>
               <label>Democratic Detonation</label>
               <br/>
-              <input type="checkbox" value="Polar Patriots" onClick={() => disableWarbond("Polar Patriots")}/>
+              <input type="checkbox" value="Polar Patriots" onClick={(e) => disableWarbond(e, "Polar Patriots")}/>
               <label>Polar Patriots</label>
             </fieldset>
             
