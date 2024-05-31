@@ -11,9 +11,13 @@ You can access the Randomizer [here](https://xoneris.github.io/Helldivers2-rando
 
 ## Changelog
 
+- 31.May - Added option to add/remove warbond weapons from the randomizer outcome.
+- 27.May - Added Emancipator Exosuit.
+- 19.May - Added a new improved randomizing algorithem for Stratagems.
 - 1.May - Added Airburst rocket and an option to select if you are a super citizen or not.
-- 23.April - Added basic functionality for randomizing primaries, secondaries and grenades. Currently no options for filtering or selecting which ones though.  
-- 27.march - Added Emancipator Exosuit.
+- 23.April - Added basic functionality for randomizing primaries, secondaries and grenades. Currently no options for filtering or selecting which ones though.
+- 18.April - Added option for 3/4 Stratagems and to have only 1 Support weapon and/or 1 Backpack.
+- 15.April - Published the most basic version of a randomizer.
 
 ## Credits
 
