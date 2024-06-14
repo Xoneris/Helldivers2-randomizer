@@ -11,7 +11,7 @@ A small webapp created with [React](https://react.dev) that gives you a random l
 - You can toggle an option that your results will only include either one backpack and/or one support weapon.
 - If you don't own the Super Citizen DLC you can toggle an option so the one weapon that comes with that DLC can not show up in the result.
 - You can toggle any or all premium warbonds, which will prevent the content of a specific warbond to appear in the result.
- - Currently there is no option to select individual weapons from a warbond to appear or not appear in the result.
+  - Currently there is no option to select individual weapons from a warbond to appear or not appear in the result.
 
 ## Changelog
 
