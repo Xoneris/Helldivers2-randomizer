@@ -11,6 +11,7 @@ You can access the Randomizer [here](https://xoneris.github.io/Helldivers2-rando
 
 ## Changelog
 
+- 14.June - Removed the option for 3/4 stratagems since Arrow Head removed the event that caused only 3 stratagems.
 - 31.May - Added option to add/remove warbond weapons from the randomizer outcome.
 - 27.May - Added Emancipator Exosuit.
 - 19.May - Added a new improved randomizing algorithem for Stratagems.

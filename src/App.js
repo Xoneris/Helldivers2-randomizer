@@ -197,9 +197,7 @@ function App() {
       primary_weapons_copy.current.push(...warbond_primarys)
       secondary_weapons_copy.current.push(...warbond_secondarys)
       grenades_copy.current.push(...warbond_grenades)
-
     }
-
   }
 
   return (
