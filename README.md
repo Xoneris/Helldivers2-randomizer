@@ -2,12 +2,16 @@
 
 You can access the Randomizer [here](https://xoneris.github.io/Helldivers2-randomizer/).
 
+A small webapp created with [React](https://react.dev) that gives you a random loadout of stratagems and weapons for the videogame [Helldivers 2](https://store.steampowered.com/agecheck/app/553850/). 
+
 ## Current Features
 
-- You can click on Strategems to deselect them from the randomizing procces. In case you don't have unlocked or don't want certain strategems in your loadout. 
-- The randomizer can give you either 3 or 4 strategems depending how many you can use on your planet.
-- You can toggle an option that your random results will only include either one and/or one support weapon.
-  - Known bug: in 1% of cases or so the randomizer will still give you 2 backpack or support weapons. 
+- You can randomize your stratagems and weapons.
+- You can click on stratagems to deselect them from the randomizing procces. In case you don't have unlocked or don't want certain strategems in your loadout. 
+- You can toggle an option that your results will only include either one backpack and/or one support weapon.
+- If you don't own the Super Citizen DLC you can toggle an option so the one weapon that comes with that DLC can not show up in the result.
+- You can toggle any or all premium warbonds, which will prevent the content of a specific warbond to appear in the result.
+ - Currently there is no option to select individual weapons from a warbond to appear or not appear in the result.
 
 ## Changelog
 
