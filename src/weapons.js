@@ -95,6 +95,10 @@ export const primary_weapons = [
         "name": "PLAS-101 Purifier",
         "warbond": "Polar Patriots"
     },
+    {
+        "name": "AR 23A Liberator Carbine",
+        "warbond": "Viper Commandos"
+    },
 ]
 
 export const secondary_weapons = [
@@ -121,6 +125,10 @@ export const secondary_weapons = [
     {
         "name": "P-113 Verdict",
         "warbond": "Polar Patriots"
+    },
+    {
+        "name": "SG-22 Bushwhacker",
+        "warbond": "Viper Commandos"
     },
 ]
 
@@ -156,6 +164,10 @@ export const grenades = [
     {
         "name": "G-13 Incendiary Impact Grenade",
         "warbond": "Polar Patriots"
+    },
+    {
+        "name": "K-2 Throwing Knife",
+        "warbond": "Viper Commandos"
     },
 ]
 
